@@ -6,70 +6,18 @@
 <body>
     <h1>Microbit real time data</h1>
     
-    <p>Testing.</p>
+<table>
+    <tr bgcolor="blue">
+        <th>Date</th>
+        <th>Time</th>
+        <th>Temperature</th>
+    </tr>
+    <tr bgcolor="lightblue> 
+        <tr></tr>
+    </tr>
+</table>
     
-<script>
-    // Get the canvas element and create a chart context
-    var ctx = document.getElementById('myChart').getContext('2d');
 
-    // Create an empty chart
-    var chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [], // X-axis labels (timestamps)
-            datasets: [{
-                label: 'Micro:bit Data',
-                data: [], // Y-axis data points
-                borderColor: 'blue',
-                backgroundColor: 'transparent',
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    display: true
-                },
-                y: {
-                    display: true
-                }
-            }
-        }
-    });
 
-    // Function to fetch micro:bit data and update the chart
-    function fetchDataAndRefreshChart() {
-        fetch('YOUR_MICROBIT_DATA_API_URL')
-            .then(response => response.json())
-            .then(data => {
-                // Extract the required data from the response
-                var timestamp = new Date().toLocaleTimeString();
-                var value = data.value;
-
-                // Add the new data to the chart
-                chart.data.labels.push(timestamp);
-                chart.data.datasets[0].data.push(value);
-
-                // Remove the oldest data point if the dataset becomes too large
-                if (chart.data.labels.length > 10) {
-                    chart.data.labels.shift();
-                    chart.data.datasets[0].data.shift();
-                }
-
-                // Update the chart
-                chart.update();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-
-    // Initial fetch and update
-    fetchDataAndRefreshChart();
-
-    // Fetch and update every 5 seconds
-    setInterval(fetchDataAndRefreshChart, 5000);
-</script>
 </body>
 </html>
