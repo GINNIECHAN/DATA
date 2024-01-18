@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Microbit Real Time Data</title>
+    <title>Real-Time Data Table</title>
     <script>
-        function updateTable() {
+        function getCurrentDateTime() {
             // Get the current date and time
             var currentDate = new Date();
 
             // Format the date and time as a string
             var formattedDateTime = currentDate.toLocaleString();
 
+            return formattedDateTime;
+        }
+
+        function updateTable() {
             // Create a new table row
             var newRow = document.createElement("tr");
 
-            // Create table cells for the date and time
-            var dateCell = document.createElement("td");
-            dateCell.textContent = formattedDateTime;
-            var dataCell = document.createElement("td");
+            // Create a table cell for the date and time
+            var dateTimeCell = document.createElement("td");
+            dateTimeCell.textContent = hm();
 
-          
-            dataCell.textContent = randomNumber ;
+            // Append the cell to the new row
+            newRow.appendChild(dateTimeCell);
 
-            // Append the cells to the new row
-            newRow.appendChild(dateCell);
-            newRow.appendChild(dataCell);
-
-            // Get the table body and append the new row
+            // Get the table body and insert the new row at the top
             var tableBody = document.getElementById("table-body");
-            tableBody.appendChild(newRow);
+            tableBody.insertBefore(newRow, tableBody.firstChild);
         }
 
         // Call the updateTable function every 5 seconds
@@ -35,16 +34,15 @@
     </script>
 </head>
 <body>
-    <h1>Microbit Real Time Data</h1>
+    <h1>Real-Time Data Table</h1>
     <table>
         <thead>
             <tr>
                 <th>Date and Time</th>
-                <th>Temperature</th>
+                <td>Temperature</td>
             </tr>
         </thead>
         <tbody id="table-body">
-            <!-- Existing table rows with data can be added here -->
         </tbody>
     </table>
 </body>
