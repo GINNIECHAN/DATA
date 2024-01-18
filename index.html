@@ -18,15 +18,7 @@
             dateCell.textContent = formattedDateTime;
             var dataCell = document.createElement("td");
 
-            function getRandomNumber() {
-                var numbers = [29,30,31,32,33]
-                var randomIndex = Math. floor(Math.random()*numbers length);
-                var randomNumber = numbers[randomIndex];
-                return randomNumber;
-            }
-
-            function displayRandomNumber(){
-                var randomNumber = getRandomNumber();
+          
             dataCell.textContent = randomNumber ;
 
             // Append the cells to the new row
