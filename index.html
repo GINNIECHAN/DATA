@@ -19,7 +19,7 @@
 
             // Create a table cell for the date and time
             var dateTimeCell = document.createElement("td");
-            dateTimeCell.textContent = hm();
+            dateTimeCell.textContent = getCurrentDateTime();
 
             // Append the cell to the new row
             newRow.appendChild(dateTimeCell);
@@ -39,7 +39,6 @@
         <thead>
             <tr>
                 <th>Date and Time</th>
-                <td>Temperature</td>
             </tr>
         </thead>
         <tbody id="table-body">
