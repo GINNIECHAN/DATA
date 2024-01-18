@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Real-Time Data Table</title>
-    <title>Microbit Real Time Data</title>
+    <title>Real-Time Time and Temperature</title>
     <script>
-        function updateTable() {
-            // Get the current date and time
-
-            var newRow = document.createElement("tr");
-            // Create table cells for the date and time
-            var dateCell = document.createElement("td");
-            dateCell.textContent = formattedDateTime;
-            var dataCell = document.createElement("td");
-            // Replace this with the actual real-time data you want to display
-            dataCell.textContent = "Temperature";
-            // Append the cells to the new row
-            newRow.appendChild(dateCell);
-            newRow.appendChild(dataCell);
-            // Get the table body and append the new row
-            var tableBody = document.getElementById("table-body");
-            tableBody.appendChild(newRow);
+        function getCurrentTime() {
+            var currentTime = new Date();
+            return currentTime.toLocaleTimeString();
         }
-        // Call the updateTable function every 5 seconds
+
+        function getRandomTemperature() {
+            var temperatures = [29, 30, 31, 32, 33];
+            var randomIndex = Math.floor(Math.random() * temperatures.length);
+            return temperatures[randomIndex];
+        }
+
+        function updateTable() {
+            var currentTime = getCurrentTime();
+            var temperature = getRandomTemperature();
+
+            var table = document.getElementById("data-table");
+            var newRow = table.insertRow();
+
+            var timeCell = newRow.insertCell();
+            timeCell.textContent = currentTime;
+
+            var temperatureCell = newRow.insertCell();
+            temperatureCell.textContent = temperature;
+        }
+
         setInterval(updateTable, 5000);
     </script>
 </head>
 <body>
-    <h1>Real-Time Data Table</h1>
-    <h1>Microbit Real Time Data</h1>
-    <table>
+    <h1>Real-Time Time and Temperature</h1>
+    <table id="data-table">
         <thead>
             <tr>
-                <th>Date and Time</th>
-                <th>Data</th>
+                <th>Time</th>
+                <th>Temperature</th>
             </tr>
         </thead>
-        <tbody id="table-body">
-            <!-- Existing table rows with data can be added here -->
+        <tbody>
         </tbody>
     </table>
 </body>
 </html>
-
