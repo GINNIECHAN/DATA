@@ -2,48 +2,43 @@
 <html>
 <head>
     <title>Real-Time Data Table</title>
+    <title>Microbit Real Time Data</title>
     <script>
-        function getCurrentDateTime() {
-            // Get the current date and time
-            var currentDate = new Date();
-
-            // Format the date and time as a string
-            var formattedDateTime = currentDate.toLocaleString();
-
-            return formattedDateTime;
-        }
-
         function updateTable() {
-            // Create a new table row
+            // Get the current date and time
+@@ -14,27 +14,27 @@
             var newRow = document.createElement("tr");
-
-            // Create a table cell for the date and time
-            var dateTimeCell = document.createElement("td");
-            dateTimeCell.textContent = getCurrentDateTime();
-
-            // Append the cell to the new row
-            newRow.appendChild(dateTimeCell);
-
-            // Get the table body and insert the new row at the top
+            // Create table cells for the date and time
+            var dateCell = document.createElement("td");
+            dateCell.textContent = formattedDateTime;
+            var dataCell = document.createElement("td");
+            // Replace this with the actual real-time data you want to display
+            dataCell.textContent = "Temperature";
+            // Append the cells to the new row
+            newRow.appendChild(dateCell);
+            newRow.appendChild(dataCell);
+            // Get the table body and append the new row
             var tableBody = document.getElementById("table-body");
-            tableBody.insertBefore(newRow, tableBody.firstChild);
+            tableBody.appendChild(newRow);
         }
-
         // Call the updateTable function every 5 seconds
         setInterval(updateTable, 5000);
     </script>
 </head>
 <body>
     <h1>Real-Time Data Table</h1>
+    <h1>Microbit Real Time Data</h1>
     <table>
         <thead>
             <tr>
                 <th>Date and Time</th>
-                <td>Temperature</td>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody id="table-body">
+            <!-- Existing table rows with data can be added here -->
         </tbody>
     </table>
 </body>
 </html>
+
