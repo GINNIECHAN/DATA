@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Microbit data</title>
-</head>
-<body>
-    <h1>Microbit real time data</h1>
-    <!DOCTYPE html>
-<html>
-<head>
+    <title>Real-Time Data Table</title>
     <script>
-        function displayDateTime() {
+        function updateTable() {
             // Get the current date and time
             var currentDate = new Date();
 
             // Format the date and time as a string
             var formattedDateTime = currentDate.toLocaleString();
 
-            // Display the date and time in an HTML element with the id "datetime"
-            document.getElementById("datetime").textContent = formattedDateTime;
+            // Create a new table row
+            var newRow = document.createElement("tr");
+
+            // Create table cells for the date and time
+            var dateCell = document.createElement("td");
+            dateCell.textContent = formattedDateTime;
+            var dataCell = document.createElement("td");
+            // Replace "YOUR_REAL_TIME_DATA" with the actual real-time data you want to display
+            dataCell.textContent = YOUR_REAL_TIME_DATA;
+
+            // Append the cells to the new row
+            newRow.appendChild(dateCell);
+            newRow.appendChild(dataCell);
+
+            // Get the table body and append the new row
+            var tableBody = document.getElementById("table-body");
+            tableBody.appendChild(newRow);
         }
 
-        // Call the displayDateTime function when the page loads
-        window.onload = function() {
-            displayDateTime();
-        };
+        // Call the updateTable function every 5 seconds
+        setInterval(updateTable, 5000);
     </script>
 </head>
 <body>
-    <h1>Current Date and Time</h1>
-    <p id="datetime"></p>
-</body>
-</html>
-<table>
-    <tr bgcolor="lightblue">
-        <th>Date</th>
-        <th>Time</th>
-        <th>Temperature</th>
-    </tr>
-    <tr bgcolor="lightblue> 
-        <td>function() {
-            displayDateTime();</tr>
-    </tr>
-</table>
-    
-
-
+    <h1>Real-Time Data Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date and Time</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Existing table rows with data can be added here -->
+        </tbody>
+    </table>
 </body>
 </html>
