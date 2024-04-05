@@ -16,78 +16,12 @@
             max-width: 600px;
             margin-bottom: 20px;
         }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        th {
-            font-weight: bold;
-        }
-
-        th:not(:first-child),
-        td:not(:first-child) {
-            padding-left: 15px;
-        }
     </style>
-    <script>
-        function getCurrentTime() {
-            var currentTime = new Date();
-            return currentTime.toLocaleTimeString();
-        }
-
-        function getRandomTemperature() {
-            var temperatures = [29, 30, 31, 32, 33];
-            var randomIndex = Math.floor(Math.random() * temperatures.length);
-            return temperatures[randomIndex];
-        }
-
-        function getRandomAlcohol() {
-            var alcohol = Math.floor(Math.random() * (130 - 100 + 1)) + 100;
-            return alcohol;
-        }
-
-        function getRandomHeartRate() {
-            var heartRate = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
-            return heartRate;
-        }
-
-        function updateTable() {
-            var currentTime = getCurrentTime();
-            var temperature = getRandomTemperature();
-            var alcohol = getRandomAlcohol();
-            var heartRate = getRandomHeartRate();
-
-            var table = document.getElementById("data-table");
-            var newRow = table.insertRow();
-
-            var timeCell = newRow.insertCell();
-            timeCell.textContent = currentTime;
-
-            var temperatureCell = newRow.insertCell();
-            temperatureCell.textContent = temperature;
-
-            var alcoholCell = newRow.insertCell();
-            alcoholCell.textContent = alcohol;
-
-            var heartRateCell = newRow.insertCell();
-            heartRateCell.textContent = heartRate;
-        }
-
-        setInterval(updateTable, 5000);
-    </script>
 </head>
 <body>
     <h1>Arduino Real-time Data</h1>
     <div class="container">
+        <!-- Place your table code here -->
         <table id="data-table">
             <thead>
                 <tr>
@@ -98,6 +32,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Table body content goes here -->
             </tbody>
         </table>
     </div>
