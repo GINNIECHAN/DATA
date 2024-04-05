@@ -39,42 +39,44 @@
             visibility: hidden;
         }
     </style>
-    <script>
-        function getCurrentTime() {
-            var currentTime = new Date();
-            return currentTime.toLocaleTimeString();
-        }
+<script>
+  function getCurrentTime() {
+    var currentTime = new Date();
+    return currentTime.toLocaleTimeString();
+  }
 
-        function getRandomTemperature() {
-            var temperatures = [29, 30, 31, 32, 33];
-            var randomIndex = Math.floor(Math.random() * temperatures.length);
-            return temperatures[randomIndex];
-        }
+  function getRandomTemperature() {
+    var temperatures = [29, 30, 31, 32, 33];
+    var randomIndex = Math.floor(Math.random() * temperatures.length);
+    return temperatures[randomIndex];
+  }
 
-        function updateTable() {
-            var currentTime = getCurrentTime();
-            var temperature = getRandomTemperature();
+  function updateTable() {
+    var currentTime = getCurrentTime();
+    var temperature = getRandomTemperature();
 
-            var table = document.getElementById("data-table");
-            var newRow = table.insertRow();
+    var table = document.getElementById("data-table");
+    var newRow = table.insertRow();
 
-            var timeCell = newRow.insertCell();
-            timeCell.textContent = currentTime;
+    var timeCell = newRow.insertCell();
+    timeCell.textContent = currentTime;
 
-            var temperatureCell = newRow.insertCell();
-            temperatureCell.textContent = temperature;
+    var temperatureCell = newRow.insertCell();
+    temperatureCell.textContent = temperature;
 
-            // Remove excess rows to only show the latest data
-            if (table.rows.length > 5) {
-                table.deleteRow(1);
-            }
+    // Remove excess rows to only show the latest data
+    if (table.rows.length > 5) {
+      table.deleteRow(1);
+    }
 
-            var normalText = document.getElementById("normal-text");
-            normalText.style.visibility = "visible";
-        }
+    var normalText = document.getElementById("normal-text");
+    normalText.style.visibility = "visible";
 
-        setTimeout(updateTable, 5000);
-    </script>
+    setTimeout(updateTable, 5000); // Set the timeout for the next update
+  }
+
+  updateTable(); // Start the initial update
+</script>
 </head>
 <body>
     <h1>Arduino Real-time Data</h1>
