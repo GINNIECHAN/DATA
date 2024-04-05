@@ -1,67 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Arduino Real Time Data</title>
-    <script>
-        function getCurrentTime() {
-            var currentTime = new Date();
-            return currentTime.toLocaleTimeString();
-        }
+    <title>Arduino Real Time Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-        function getRandomTemperature() {
-            var temperatures = [29, 30, 31, 32, 33];
-            var randomIndex = Math.floor(Math.random() * temperatures.length);
-            return temperatures[randomIndex];
-        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-        function getRandomAlcohol() {
-            var alcohol = Math.floor(Math.random() * (130 - 100 + 1)) + 100;
-            return alcohol;
-        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-        function getRandomHeartRate() {
-            var heartRate = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
-            return heartRate;
-        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
 
-        function updateTable() {
-            var currentTime = getCurrentTime();
-            var temperature = getRandomTemperature();
-            var alcohol = getRandomAlcohol();
-            var heartRate = getRandomHeartRate();
+        th {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function getCurrentTime() {
+            var currentTime = new Date();
+            return currentTime.toLocaleTimeString();
+        }
 
-            var table = document.getElementById("data-table");
-            var newRow = table.insertRow();
+        function getRandomTemperature() {
+            var temperatures = [29, 30, 31, 32, 33];
+            var randomIndex = Math.floor(Math.random() * temperatures.length);
+            return temperatures[randomIndex];
+        }
 
-            var timeCell = newRow.insertCell();
-            timeCell.textContent = currentTime;
+        function getRandomAlcohol() {
+            var alcohol = Math.floor(Math.random() * (130 - 100 + 1)) + 100;
+            return alcohol;
+        }
 
-            var temperatureCell = newRow.insertCell();
-            temperatureCell.textContent = temperature;
+        function getRandomHeartRate() {
+            var heartRate = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
+            return heartRate;
+        }
 
-            var alcoholCell = newRow.insertCell();
-            alcoholCell.textContent = alcohol;
+        function updateTable() {
+            var currentTime = getCurrentTime();
+            var temperature = getRandomTemperature();
+            var alcohol = getRandomAlcohol();
+            var heartRate = getRandomHeartRate();
 
-            var heartRateCell = newRow.insertCell();
-            heartRateCell.textContent = heartRate;
-        }
+            var table = document.getElementById("data-table");
+            var newRow = table.insertRow();
 
-        setInterval(updateTable, 5000);
-    </script>
+            var timeCell = newRow.insertCell();
+            timeCell.textContent = currentTime;
+
+            var temperatureCell = newRow.insertCell();
+            temperatureCell.textContent = temperature;
+
+            var alcoholCell = newRow.insertCell();
+            alcoholCell.textContent = alcohol;
+
+            var heartRateCell = newRow.insertCell();
+            heartRateCell.textContent = heartRate;
+        }
+
+        setInterval(updateTable, 5000);
+    </script>
 </head>
 <body>
-    <h1>Arduino Real-time Data</h1>
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th style="font-size: 500%;">Time</th>
-                <th style="font-size: 500%;">Temperature</th>
-                <th style="font-size: 500%;">Alcohol</th>
-                <th style="font-size: 500%;">Heart Rate</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <h1>Arduino Real-time Data</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Temperature</th>
+                <th>Alcohol</th>
+                <th>Heart Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </body>
 </html>
