@@ -68,14 +68,12 @@
             if (table.rows.length > 5) {
                 table.deleteRow(1);
             }
-        }
 
-        setTimeout(function() {
             var normalText = document.getElementById("normal-text");
             normalText.style.visibility = "visible";
-        }, 7000);
+        }
 
-        setInterval(updateTable, 5000);
+        setTimeout(updateTable, 5000);
     </script>
 </head>
 <body>
