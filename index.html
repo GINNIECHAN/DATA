@@ -8,14 +8,11 @@
         }
 
         h1 {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
         .container {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-gap: 20px;
             max-width: 600px;
             margin-bottom: 20px;
         }
@@ -104,8 +101,8 @@
             <tbody>
             </tbody>
         </table>
-        <canvas id="chart"></canvas>
     </div>
+    <canvas id="chart"></canvas>
     <script>
         var ctx = document.getElementById("chart").getContext("2d");
         var temperatureData = [];
