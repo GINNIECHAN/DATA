@@ -1,49 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-    <title>Microbit Real Time Data</title>
-    <script>
-        function getCurrentTime() {
-            var currentTime = new Date();
-            return currentTime.toLocaleTimeString();
-        }
+    <title>Arduino Real Time Data</title>
+    <script>
+        function getCurrentTime() {
+            var currentTime = new Date();
+            return currentTime.toLocaleTimeString();
+        }
 
-        function getRandomTemperature() {
-            var temperatures = [29, 30, 31, 32, 33];
-            var randomIndex = Math.floor(Math.random() * temperatures.length);
-            return temperatures[randomIndex];
-        }
+        function getRandomTemperature() {
+            var temperatures = [29, 30, 31, 32, 33];
+            var randomIndex = Math.floor(Math.random() * temperatures.length);
+            return temperatures[randomIndex];
+        }
 
-        function updateTable() {
-            var currentTime = getCurrentTime();
-            var temperature = getRandomTemperature();
+        function getRandomAlcohol() {
+            var alcohol = Math.floor(Math.random() * (130 - 100 + 1)) + 100;
+            return alcohol;
+        }
 
-            var table = document.getElementById("data-table");
-            var newRow = table.insertRow();
+        function getRandomHeartRate() {
+            var heartRate = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
+            return heartRate;
+        }
 
-            var timeCell = newRow.insertCell();
-            timeCell.textContent = currentTime;
+        function updateTable() {
+            var currentTime = getCurrentTime();
+            var temperature = getRandomTemperature();
+            var alcohol = getRandomAlcohol();
+            var heartRate = getRandomHeartRate();
 
-            var temperatureCell = newRow.insertCell();
-            temperatureCell.textContent = temperature;
-        }
+            var table = document.getElementById("data-table");
+            var newRow = table.insertRow();
 
-        setInterval(updateTable, 5000);
-    </script>
+            var timeCell = newRow.insertCell();
+            timeCell.textContent = currentTime;
+
+            var temperatureCell = newRow.insertCell();
+            temperatureCell.textContent = temperature;
+
+            var alcoholCell = newRow.insertCell();
+            alcoholCell.textContent = alcohol;
+
+            var heartRateCell = newRow.insertCell();
+            heartRateCell.textContent = heartRate;
+        }
+
+        setInterval(updateTable, 5000);
+    </script>
 </head>
-    <link>
 <body>
-    <h1>Microbit Real time data</h1>
-    <table id="data-table">
-        <thead> 
-            <tr>
-                <th style="font-size 500%;">Time</th> 
-                <th style="font-size 500%;">Temperature</th> 
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <h1>Arduino Real-time Data</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th style="font-size: 500%;">Time</th>
+                <th style="font-size: 500%;">Temperature</th>
+                <th style="font-size: 500%;">Alcohol</th>
+                <th style="font-size: 500%;">Heart Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </body>
 </html>
