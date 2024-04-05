@@ -12,7 +12,10 @@
             margin-bottom: 20px;
         }
 
-        canvas {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
             max-width: 600px;
             margin-bottom: 20px;
         }
@@ -31,6 +34,11 @@
 
         th {
             font-weight: bold;
+        }
+
+        th:not(:first-child),
+        td:not(:first-child) {
+            padding-left: 15px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -115,18 +123,20 @@
 </head>
 <body>
     <h1>Arduino Real-time Data</h1>
-    <canvas id="chart"></canvas>
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th>Time</th>
-                <th>Temperature</th>
-                <th>Alcohol</th>
-                <th>Heart Rate</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <div class="container">
+        <canvas id="chart"></canvas>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Temperature</th>
+                    <th>Alcohol</th>
+                    <th>Heart Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
