@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Arduino Real Time Data</title>
+    <title>Arduino Real-time Data</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
 
         h1 {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
         .container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             grid-gap: 20px;
             max-width: 600px;
             margin-bottom: 20px;
@@ -84,38 +84,6 @@
 
             var heartRateCell = newRow.insertCell();
             heartRateCell.textContent = heartRate;
-
-            updateChart(temperature);
-        }
-
-        function updateChart(temperature) {
-            var ctx = document.getElementById("chart").getContext("2d");
-            if (window.temperatureChart) {
-                window.temperatureChart.data.labels.push('');
-                window.temperatureChart.data.datasets[0].data.push(temperature);
-                window.temperatureChart.update();
-            } else {
-                window.temperatureChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: [''],
-                        datasets: [{
-                            label: 'Temperature',
-                            data: [temperature],
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            }
         }
 
         setInterval(updateTable, 5000);
@@ -124,7 +92,6 @@
 <body>
     <h1>Arduino Real-time Data</h1>
     <div class="container">
-        <canvas id="chart"></canvas>
         <table id="data-table">
             <thead>
                 <tr>
@@ -137,6 +104,42 @@
             <tbody>
             </tbody>
         </table>
+        <canvas id="chart"></canvas>
     </div>
+    <script>
+        var ctx = document.getElementById("chart").getContext("2d");
+        var temperatureData = [];
+
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Temperature',
+                    data: temperatureData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function updateChart() {
+            var temperature = getRandomTemperature();
+
+            chart.data.labels.push('');
+            chart.data.datasets[0].data.push(temperature);
+            chart.update();
+        }
+
+        setInterval(updateChart, 5000);
+    </script>
 </body>
 </html>
