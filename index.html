@@ -56,7 +56,7 @@
             var temperature = getRandomTemperature();
 
             var table = document.getElementById("data-table");
-            var newRow = table.insertRow();
+            var newRow = table.insertRow(-1);
 
             var timeCell = newRow.insertCell();
             timeCell.textContent = currentTime;
@@ -71,25 +71,9 @@
 
             var normalText = document.getElementById("normal-text");
             normalText.style.visibility = "visible";
-
-            setTimeout(function () {
-                var nextTime = getCurrentTime();
-                var nextTemperature = getRandomTemperature();
-
-                var nextRow = table.insertRow();
-                var nextTimeCell = nextRow.insertCell();
-                nextTimeCell.textContent = nextTime;
-
-                var nextTemperatureCell = nextRow.insertCell();
-                nextTemperatureCell.textContent = nextTemperature;
-
-                if (table.rows.length > 5) {
-                    table.deleteRow(1);
-                }
-            }, 5000);
         }
 
-        updateTable();
+        setInterval(updateTable, 5000);
     </script>
 </head>
 <body>
