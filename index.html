@@ -56,6 +56,11 @@
 
             var temperatureCell = newRow.insertCell();
             temperatureCell.textContent = temperature;
+
+            // Remove excess rows to only show the latest data
+            if (table.rows.length > 5) {
+                table.deleteRow(1);
+            }
         }
 
         setInterval(updateTable, 5000);
