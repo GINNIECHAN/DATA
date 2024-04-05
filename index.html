@@ -31,15 +31,6 @@
         th {
             font-weight: bold;
         }
-
-        .normal-text {
-            position: absolute;
-            bottom: 0;
-            left: 20px;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
     </style>
     <script>
         function getCurrentTime() {
@@ -53,21 +44,9 @@
             return temperatures[randomIndex];
         }
 
-        function getRandomAlcohol() {
-            var alcohol = Math.floor(Math.random() * (130 - 100 + 1)) + 100;
-            return alcohol;
-        }
-
-        function getRandomHeartRate() {
-            var heartRate = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
-            return heartRate;
-        }
-
         function updateTable() {
             var currentTime = getCurrentTime();
             var temperature = getRandomTemperature();
-            var alcohol = getRandomAlcohol();
-            var heartRate = getRandomHeartRate();
 
             var table = document.getElementById("data-table");
             var newRow = table.insertRow();
@@ -77,12 +56,6 @@
 
             var temperatureCell = newRow.insertCell();
             temperatureCell.textContent = temperature;
-
-            var alcoholCell = newRow.insertCell();
-            alcoholCell.textContent = alcohol;
-
-            var heartRateCell = newRow.insertCell();
-            heartRateCell.textContent = heartRate;
         }
 
         setInterval(updateTable, 5000);
@@ -96,16 +69,11 @@
                 <tr>
                     <th>Time</th>
                     <th>Temperature</th>
-                    <th>Alcohol</th>
-                    <th>Heart Rate</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-    </div>
-    <div class="normal-text">
-        NORMAL
     </div>
 </body>
 </html>
