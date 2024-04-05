@@ -12,6 +12,11 @@
             margin-bottom: 20px;
         }
 
+        canvas {
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -28,6 +33,7 @@
             font-weight: bold;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function getCurrentTime() {
             var currentTime = new Date();
@@ -70,6 +76,38 @@
 
             var heartRateCell = newRow.insertCell();
             heartRateCell.textContent = heartRate;
+
+            updateChart(temperature);
+        }
+
+        function updateChart(temperature) {
+            var ctx = document.getElementById("chart").getContext("2d");
+            if (window.temperatureChart) {
+                window.temperatureChart.data.labels.push('');
+                window.temperatureChart.data.datasets[0].data.push(temperature);
+                window.temperatureChart.update();
+            } else {
+                window.temperatureChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [''],
+                        datasets: [{
+                            label: 'Temperature',
+                            data: [temperature],
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
         }
 
         setInterval(updateTable, 5000);
@@ -77,6 +115,7 @@
 </head>
 <body>
     <h1>Arduino Real-time Data</h1>
+    <canvas id="chart"></canvas>
     <table id="data-table">
         <thead>
             <tr>
